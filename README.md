@@ -9,8 +9,8 @@
 # Em outro ambiente
 ## Executar ambiente virtual
 
-[ ] venv/Scripts/activate
-[ ] Instalar dependências  
+- [X]- venv/Scripts/activate
+- [X]- Instalar dependências  
 
 Instalar dependencias do projeto
 
