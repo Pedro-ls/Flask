@@ -15,8 +15,8 @@ import server.schemas_serializable
 import server.schemas_serializable as serializer
 
 # importa as rotas e o registrador de rotas
-from server.resource import registerRoutes
 from server.resource.routes import routes
+from server.resource import registerRoutes
 
 
 # factory que inicia o projeto
@@ -27,7 +27,7 @@ def create_app(config=None):
     """
     app: Flask = Flask(__name__)  # cria instancia
 
-    server.config.from_object(config)  # passa configuração para o app
+    app.config.from_object(config)  # passa configuração para o app
 
     if config is None:
         con = "sqlite:///" + os.path.realpath("tmp/bd.db")  # paga path absoluta e junta com tmp/bd
@@ -38,7 +38,7 @@ def create_app(config=None):
     database.init_database(app)  # inicia SQLAlchemy
     Migrate(app, app.db)  # inicia o classe de migração
 
-    registerRoutes(app, routes)  # registra a rotas do array dentro do array de routes.py
     serializer.init_series(app)  # inicia serializers
+    registerRoutes(app, routes)  # registra a rotas do array dentro do array de routes.py
 
     return app  # retorna uma instância da classe Flask configurada
